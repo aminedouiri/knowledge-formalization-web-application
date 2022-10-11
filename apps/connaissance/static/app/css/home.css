@@ -1,0 +1,28 @@
+.section-deux {
+    height: 90vh;
+    width: 95vw;
+    display: grid;
+    grid-template-columns: repeat(2, 50vw);
+    grid-template-rows: 100vh;
+    grid-template-areas: 'left-section right-section';
+}
+
+.left-section {
+    grid-area: left-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-section {
+    grid-area: right-section;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.get-started {
+    width: 100%;
+    height: 90vh;
+}
