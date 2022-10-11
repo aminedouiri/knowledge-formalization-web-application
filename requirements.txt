@@ -6,3 +6,4 @@ wheel
 cython
 owlready2
 django-fontawesome
+graphviz
