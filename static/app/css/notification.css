@@ -1,0 +1,18 @@
+.main-notification {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-template-areas: 'notification-commentaire notification-connaissance';
+}
+
+.notification-commentaire {
+    grid-area: notification-commentaire;
+    margin-left: 10vw;
+    margin-right: 7vw;
+}
+
+.notification-connaissance {
+    grid-area: notification-connaissance;
+    margin-left: 7vw;
+    margin-right: 10vw;
+}

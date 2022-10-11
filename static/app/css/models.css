@@ -1,0 +1,28 @@
+.main-models {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 90vh;
+    margin-top: 15vh;
+}
+
+.image-card {
+    width: max-content;
+    height: auto;
+}
+
+.card-element {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+.colors {
+    background-color: #1f77b4;
+    color: #ff7f0e;
+    background: #e377c2;
+}

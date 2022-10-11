@@ -1,0 +1,24 @@
+.main-domaine {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 0.5fr;
+    grid-template-rows: 90vh;
+    grid-template-areas: 'model-vide1 model-domaine model-vide2';
+}
+
+.modele-domaine {
+    margin-top: 3vh;
+    grid-area: model-domaine;
+    overflow: auto;
+}
+
+.modele-vide1 {
+    grid-area: model-vide1;
+}
+
+.modele-vide2 {
+    grid-area: model-vide2;
+}
+
+.field label {
+    margin-bottom: -5px;
+}

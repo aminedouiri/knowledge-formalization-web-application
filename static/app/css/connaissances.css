@@ -1,0 +1,107 @@
+/* Connaissance Ingenieur */
+
+.main-connaissances {
+    display: grid;
+    grid-template-areas: "connaissance affichage" "commentaire affichage";
+    grid-template-rows: 60vh 30vh;
+    grid-template-columns: 0.6fr 1fr;
+}
+
+#connaissance {
+    grid-area: connaissance;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#affichage {
+    grid-area: affichage;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#commentaire {
+    grid-area: commentaire;
+}
+
+.form-commentaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+
+/* Connaissance Expert */
+
+.div-connaissances {
+    display: grid;
+    grid-template-areas: "connaissance-expert affichage-expert" "connaissance-expert affichage-expert";
+    grid-template-rows: 60vh 30vh;
+    grid-template-columns: 0.6fr 1fr;
+}
+
+#div-connaissance {
+    grid-area: connaissance-expert;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#div-affichage {
+    grid-area: affichage-expert;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-element {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.affichage-image {
+    width: max-content;
+    height: auto;
+}
+
+.affichage-csv {
+    width: 100%;
+    height: auto
+}
+
+
+/****************************/
+
+#connaissance,
+#affichage,
+#commentaire,
+#div-affichage,
+#div-connaissance {
+    overflow: auto;
+    background-color: white;
+    margin: 10px;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+}
+
+.notification-text {
+    font-size: 15px;
+}
+
+.commentaire-vide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+.icon-visualisation {
+    width: 20px;
+    height: 20px;
+}
