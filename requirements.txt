@@ -1,0 +1,8 @@
+python
+pandas
+django
+rdflib
+wheel
+cython
+owlready2
+django-fontawesome
