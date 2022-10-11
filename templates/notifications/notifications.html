@@ -1,0 +1,62 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Notifications | KnowledgeForm
+{% endblock title %}
+{% load static %}
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'app/css/notification.css' %}">{% endblock css %}
+
+{% block content %}
+
+{% if request.user.is_authenticated %}
+
+  {% if request.user.userprofile.is_expert %}
+  <br>
+  <h1 class="has-text-centered is-italic is-size-2">Connaissances</h1>
+  <br>
+      {% for c in connaissances %}
+      <div class="notification is-info notification-element" style="margin-left:30vw;margin-right:30vw;">
+          <button class="delete"></button>
+          <p> Nom de Connaissance <strong>{{c.nom_connaissance}}</strong> est un <strong>{{c.forme_connaissance}}</strong> est ajouter a <strong>{{c.date_creation}}</strong></p>
+        </div>
+      {% endfor %}
+      
+      <br>
+
+  {% else %}
+
+  <div class="main-notification">
+                                        
+    <div class="notification-commentaire">
+        <h1 class="has-text-centered is-italic is-size-3">Commentaires</h1>
+        <br>
+        {% for com in  commentaires %}
+          <div class="notification is-warning notification-element">
+            <button class="delete"></button>
+            <p> Commentaire ajouter par <strong> expert7 </strong> pour connaissance  <strong>{{com.created_for}}</strong> est cree a <strong>{{com.created_at}}</strong>
+              contenu <strong>{{com.contenu}}</strong>
+            </p>
+          </div>
+        {% endfor %}
+        <br>
+    </div>
+
+    <div class="notification-connaissance">
+        <h1 class="has-text-centered is-italic is-size-3">Connaissances</h1>
+          <br>
+          {% for c in connaissances %}
+            <div class="notification is-info notification-element" style="">
+                <button class="delete"></button>
+                <p> Nom de Connaissance <strong>{{c.nom_connaissance}}</strong> est un <strong>{{c.forme_connaissance}}</strong> est cree a <strong>{{c.date_creation}}</strong></p>
+            </div>
+        {% endfor %}
+        <br>
+    </div>
+
+  </div>
+  {% endif %}
+{% endif %}
+
+{% endblock content %}

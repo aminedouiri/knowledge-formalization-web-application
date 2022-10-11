@@ -1,0 +1,47 @@
+{% extends 'core/base.html' %}
+{% block title %}Expert | Formula{% endblock title %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/connaissances.css' %}">{% endblock css %}
+{% block content %}
+
+
+<div class="div-connaissances">
+
+    <div class="card card-content" id="div-connaissance">
+        
+        <form action="" method="post" class="form-commentaire">
+            {% csrf_token %}
+            <div class="form-element">
+                <h3>Nom de Connaissance: {{connaissance_item.nom_connaissance}}</h3>
+            </div>
+
+            <textarea class="textarea" placeholder="Entre your commentaire" rows="7" cols="60" name="commentaire">
+            </textarea>
+
+            <div class="form-element">
+                <input type="submit" value="commente" class="button is-link" name="commente">
+            
+                <input type="submit" value="retour" class="button is-danger" name="cancel">
+            </div>
+        </form>
+
+    </div>
+
+    <div class="card card-content" id="div-affichage">
+        
+            <h1><strong>Visualisation:</strong></h1>
+            {% if connaissance_item.forme_connaissance == 'document' %}
+            <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+            {% elif connaissance_item.forme_connaissance == 'tableau' %}
+            <div style="width:100%;height:auto;">{{tableau | safe}}</div>
+            {% elif connaissance_item.forme_connaissance == 'image' %}
+
+            <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa">
+            {% endif %}
+        
+
+
+    </div>
+
+</div>
+{% endblock content %}

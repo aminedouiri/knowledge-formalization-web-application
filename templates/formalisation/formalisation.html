@@ -1,0 +1,501 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+Formalisation | KnowledgeForm
+{% endblock title %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/formalisation.css' %}"> {% endblock %}
+{% block content %}
+
+
+<div class="main-formalisation">
+
+    <div class="list-formalisation-form card card-content box">
+
+        <div class="element-center">
+        
+            <select id="modele" class="select is-link select-models">
+                <option value="" selected>Choisi le Modele</option>
+                <option value="form-tache">Modele de Tache</option>
+                <option value="form-historique">Modele Historique</option>
+                <option value="form-activite">Modele Activite</option>
+                <option value="form-phenomene">Modele Phenomene Metier</option>
+                <option value="form-strategie">Modele Strategique</option>
+            </select>
+
+        </div>
+
+        <div class="element-center"> 
+
+            <form class="data form-floating" action="." method="post" id="form-tache">
+                {% csrf_token %}
+                
+
+                    <div class="field">    
+                        <div class="control">
+                            <label class="label" id="nom_tache">Nom de Tache</label>
+                            <input class="input" type="text" name="nom_tache" id="nom_tache">
+                        </div>
+                    </div>
+  
+                        <div class="field select">
+                                
+                            <select name="type_tache" class="formaliser-select">
+                                <option value="" selected>Type de tache</option>
+                                <option value="iterative">Iterative</option>
+                                <option value="repetitive">Repetitive</option>
+                                <option value="alternative">Alternative</option>
+                                <option value="sequentielle">Sequentielle</option>
+                                <option value="parallele">Parallele</option>
+                                <option value="teminale">Terminale</option>
+                            </select>
+
+                        </div>
+
+                    <div class="field">
+                        
+                        <div class="control">
+                            <label class="label">Condition de Tache</label>
+                            <input class="input" type="text" name="condition_tache">
+                        </div>
+                    </div>
+
+                    <div class="field select">  
+                        <select name="type_partage_tache">
+                            <option value="" selected>Type de partage</option>
+                            <option value="prive">Prive</option>
+                            <option value="public">Public</option>
+                        </select>
+                    </div>
+
+                    {% comment %} <div class="field">
+                        <button type="button" class="ajouter_tache button is-link is-outlined">Ajouter Tache</button>
+                        <input type="number" id="label" value="1" class="label" name="label_tache" style="display:none;"></input>
+                    </div> {% endcomment %}
+
+                
+
+
+                <div class="control">
+                    <input type="submit" class="button is-info input" value="Formaliser" name="tache"></input>
+                </div>
+
+            </form>
+
+
+            <form class="data" action="." method="post" id="form-historique">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label class="label">Nom de Generation</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_generation">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="label">Debut de Periode</label>
+                        <input type="date" name="debut_periode" class="input">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="label">Fin de Periode</label>
+                        <input type="date" name="fin_periode" class="input">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de l'argumenetation de Generation</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_argumentation">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Element de Generation</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_element">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Classe de Element</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_classe">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Objectif de Classe</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_objectif">
+                    </div>
+                </div>
+
+                <div class="field select">  
+                    <select name="type_partage_generation" class="input">
+                        <option value="" selected>Type de partage</option>
+                        <option value="prive">Prive</option>
+                        <option value="public">Public</option>
+                    </select>
+                </div>
+
+                <div class="control">
+                    <input type="submit" class="button is-info input" value="Formaliser" name="historique"></input>
+                </div>
+
+            </form>
+
+
+            <form class="data" action="." method="post" id="form-phenomene">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label class="label">Nom de Phenomene Metier</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_phenomene">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de system source</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_system_source">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Action de system source</label>
+                    <div class="control">
+                        <input class="input" type="text" name="action_system_source">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Evenement Initiateur de system source</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_evenement_initiateur">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Nom de Flux</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_flux">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Type de Flux</label>
+                    <div class="control">
+                        <div class="select">
+                        <select name="type_flux">
+                            <option value="information" selected>Information</option>
+                            <option value="energie">Energie</option>
+                            <option value="matiere">Matiere</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Environnement Influenceur</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_environnement_influenceur">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Caracteristique de l'evenement influenceur</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_caracteristique">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de System Cible</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_system_cible">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Champ actif de System Cible</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_champ_actif">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Consequence de System Cible</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_consequence">
+                    </div>
+                </div>
+                <div class="field select">  
+                    <select name="type_partage_phenomene" class="input">
+                        <option value="" selected>Type de partage</option>
+                        <option value="prive">Prive</option>
+                        <option value="public">Public</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="button is-info input" value="Formaliser" name="phenomene"></input>
+                  </div>
+
+            </form>
+
+
+            <form class="data" action="." method="post" id="form-activite">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label class="label">Nom de l'activite</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_activite">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de l'acteur</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_acteur">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Caracteristique de l'acteur</label>
+                    <div class="control">
+                        <input class="input" type="text" name="caracteristique_acteur">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de ressource</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_ressource">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom d'entre</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_entre">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de sortie</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_sortie">
+                    </div>
+                </div>
+                
+
+                
+                <div class="field select">  
+                    <select name="type_partage_activite">
+                        <option value="" selected>Type de partage</option>
+                        <option value="prive">Prive</option>
+                        <option value="public">Public</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <input type ="submit" class="button is-info input" value="Formaliser" name="activite">
+                </div>
+            </form>
+
+
+        
+            <form class="data" action="." method="post" id="form-strategie">
+                {% csrf_token %}
+
+                <div class="field">
+                    <label class="label">Nom de Strategie</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_strategie">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de Mission</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_mission">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Nom de Facteur Interne</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_facteur_interne">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Type de Facteur Interne</label>
+                    <div class="control">
+                        <input class="input" type="text" name="type_facteur_interne">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Nom de Facteur Externe</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_facteur_externe">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Type de Facteur Externe</label>
+                    <div class="control">
+                        <input class="input" type="text" name="type_facteur_externe">
+                    </div>
+                </div>
+
+
+                <div class="field">
+                    <label class="label">Nom Competence</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_competence">
+                    </div>
+                </div>
+
+                {% comment %} <div class="field">
+                    <label class="label">Nom de Sous Competence</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_sous_competence">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Axe de Competence</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_axe_competence">
+                    </div>
+                </div> {% endcomment %}
+
+                {% comment %} <div class="field">
+                    <label class="label">Nom de Processus</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_processus">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Ceour Metier</label>
+                    <div class="control">
+                        <input class="input" type="text" name="ceour_metier">
+                    </div>
+                </div> {% endcomment %}
+
+                <div class="field">
+                    <label class="label">Axe de Strategie</label>
+                    <div class="control">
+                        <input class="input" type="text" name="nom_axe_strategie">
+                    </div>
+                </div>
+
+                {% comment %} <div class="field">
+                    <label class="label">Orientation Strategique</label>
+                    <div class="control">
+                        <input class="input" type="text" name="orientation_strategique">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label">Theme Strategie</label>
+                    <div class="control">
+                        <input class="input" type="text" name="theme_strategie">
+                    </div>
+                </div> {% endcomment %}
+
+            
+                <div class="field select">  
+                    <select name="type_partage_strategique" class="input">
+                        <option value="" selected>Type de partage</option>
+                        <option value="prive">Prive</option>
+                        <option value="public">Public</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <input type="submit" class="button is-info input" value="Formaliser" name="strategique"></input>
+                </div>
+
+            </form>
+        </div>
+    
+    </div>
+
+    <div class="list-connaissance-form card card-content box" >
+
+        <div style="display:flex;justify-content:space-around; margin-bottom:10px;">
+             <h2  id="list-connaissance"><strong>Connaissances:</strong></h2>
+            <div style="width:13px;height:13px;cursor:pointer;" id="hide-list">
+            <img src="{% static 'app/icons/xmark-solid.svg' %}" alt="">
+            </div>
+            <div id="show-list" style="width:14px;height:14px;cursor:pointer; display:none;">
+                <img src="{% static 'app/icons/bars-solid.svg' %}" alt=""></div> 
+            
+            </div>
+        <table class="table is-bordered list-connaissance-hide" style="padding:10px;">
+            <thead>
+                <tr>
+                    <th scope="col">Nom
+                    </th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% for con in connaissance_list %}
+                <tr>
+                        <td><a href="{% url 'viewm' con.id %}" class="">
+                            {% if con.forme_connaissance == 'tableau' %}
+                            <img src="{% static 'app/icons/table-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                            {% elif con.forme_connaissance == 'document'%}
+                            <img src="{% static 'app/icons/file-pdf-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                            {% elif con.forme_connaissance == 'image' %}
+                            <img src="{% static 'app/icons/image-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                            {% endif %}
+                            {{ con.nom_connaissance }}
+                            <div class="button is-small is-link is-outlined" style="width:40px;height:25px;"><img src="{% static 'app/icons/arrow-right-solid.svg' %}" alt="vide" class="icon-visualisation "></div></a>
+                        </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+          
+    </div>
+
+    <div class="affichage-connaissance-form card card-content box">
+
+        <h1 class="has-text-centered"><strong>Visualisation:</strong></h1>
+        
+            
+            {% if connaissance_item.forme_connaissance == 'document' %}
+                <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+            {% elif connaissance_item.forme_connaissance == 'tableau' %}
+            <div style="width:100%;height:auto;"> {{tableau | safe }}</div>
+            {% elif connaissance_item.forme_connaissance == 'image' %}
+        
+                <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
+            {% endif %}
+        
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="{% static 'app/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'app/js/formalisation.js' %}"></script>
+    <script src="{% static 'app/js/show_hide_list.js' %}"></script>
+    <script src="{% static 'app/js/ajouter_step.js' %}"></script>
+{% endblock scripts %}

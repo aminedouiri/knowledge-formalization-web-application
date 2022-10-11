@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+Visualisation | KnowledgeForm
+{% endblock title %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/visualisation.css' %}">{% endblock css %}
+{% block content %}
+<div class="main-visualisation">
+
+
+    <div id="domaine">
+        {% for domaine in domaines %}
+            <div class="content-element card-content">
+                {{domaine}}
+                <img src="{% static 'formalismes/domaine/' %}{{domaine}}.png" alt="">
+                <hr>   
+            </div>
+        {% endfor %} 
+
+    </div>
+
+
+</div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% block title %}S'identifer | KnowledgeForm{% endblock title %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+{% endblock css %}
+{% block content %}
+
+    <div class="form-main">
+
+        <div class="form login box">
+            <div class="form-content">
+
+                <header class="form-title" style="font-size:25px;">KnowledgeForm</header>
+
+                <form action="." method="post">
+                    {% csrf_token %}
+                    <div class="field input-field">
+                        <input type="text" name="username"  placeholder="Username" maxlength="150" autofocus="oui" required="" id="id_username" class="input">
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" name="password" placeholder="Mot de Passe" class="password input">
+                        <i class="fa-solid fa-eye-slash eye-icon"></i>
+                    </div>
+
+                    <div class="form-link">
+                        <a href="" class="forgot-pass">Mot de passe oublié?</a>
+                    </div>
+                    {% if form.errors %}
+                        {% for field in form %}
+                            {% for error in field.errors %} 
+                                <div class="has-text-danger">
+                                    <strong class="has-text-danger">{{ error|escape }}</strong>
+                                </div>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endif %}
+                    
+
+                    <div class="field button-field">
+                        <button>Se connecter</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span>Vous n'avez pas de compte? <a href="{% url 'signup' %}" class="link signup-link">S'inscrire</a></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'app/js/login.js' %}"></script>{% endblock scripts %}
+

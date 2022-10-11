@@ -1,0 +1,42 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+Model | KnowledgeForm
+{% endblock title %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/models.css' %}">{% endblock css %}
+
+{% block content %}
+
+{% if request.user.userprofile.is_expert == False %}
+
+    <div class="box" style="display:flex;flex-direction:column;align-items:center;margin:10px;">
+
+    <p style="font-size:30px;margin-bottom:25px;">Modèle de {{mymodele}}</p>
+
+    <img src="{% static 'app/img/' %}{{mymodele}}.png" alt="{{mymodele}}" style="width:max-content;">
+
+
+    <div class="indication box" style="align-self:flex-start;margin-top:-70px;">
+        <h3><strong>Indication:</strong></h3>
+    
+    <div class="classes" style="margin-top:10px;display:flex;flex-wrap:wrap;">
+        <p style="width:30px;height:30px;background-color:#ff7f0e;"></p>  
+        <p style="margin-left:7px;">Attribute de Classe</p> 
+    </div>
+    <div class="classes" style="margin-top:10px;display:flex;flex-wrap:wrap;">
+        <p style="width:30px;height:30px;background-color:#e377c2;"></p> 
+        <p style="margin-left:7px;">Instance de Classe</p> 
+    </div>
+    <div class="classes" style="margin-top:10px;display:flex;flex-wrap:wrap;">
+        <p style="width:30px;height:30px;background-color: #1f77b4;"></p> 
+        <p style="margin-left:7px;">Nom de Classe</p>
+         
+    </div>
+
+    </div>
+
+    <a href="{% url 'models' %}" class="button is-success is-normal" style="width:max-content;align-self:flex-end;margin-top:-70px;">Retour</a>
+    </div>
+{% endif %}
+{% endblock content %}

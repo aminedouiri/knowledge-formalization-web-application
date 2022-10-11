@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/home.css' %}">{% endblock css %}
+{% block content %}
+
+<div style="display:grid;grid-template-rows:90vh;grid-template-columns:repeat(2, 1fr);
+grid-template-areas:'left-div right-div';">
+    
+    <div class="get-started" style="display:flex;justify-content:center;align-items: center;flex-direction:column;">
+        
+        <h1 style="font-size:23px;margin-bottom:3vh;margin-left:3vw;margin-right:3vw;"><strong>KnowledgeForm</strong> est une plate forme de formalisation des connaissances organisationnelles a l'aide des ontologie avec l'expert de domaine et l'ingenieur de connaissance</h1>
+
+        <a href="{% url 'login' %}" class="button is-link is-outlined" style="width:15vw;align-self:flex-start;margin-left:2.5vw;margin-bottom:15vh;">Démarrer</a>
+    </div>
+
+    <div style="display:flex;justify-content:center;align-items:center;">
+        <img src="{% static 'app/img/avatar.jpg' %}" alt="avatar" style="width:100%;height:80%;">
+    </div>
+</div>
+
+
+{% endblock %}

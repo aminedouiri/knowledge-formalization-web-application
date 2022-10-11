@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <!-- Meta -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Formuala application web pour formalisation des connaissances organisitionnelles">
+
+        <!-- Title -->
+        <title>{% block title %}Acceuil | KnowledgeForm{% endblock title %}</title>
+
+        <!-- Styles -->
+         {% comment %} <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">  {% endcomment %}
+        
+        {% comment %} <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> {% endcomment %}
+        
+        
+        {% comment %} <link rel="stylesheet" href="{% static 'app/css/boxicons.min.css' %}"> {% endcomment %}
+        {% comment %} <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'> {% endcomment %}
+        <link rel="stylesheet" href="{% static 'app/bulma/bulma.min.css' %}">
+        <link rel="stylesheet" href="{% static 'app/css/base.css' %}">
+        {% comment %} <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script> {% endcomment %}
+        
+        
+        {% block css %}
+        
+        {% endblock css %}
+        
+        
+    </head>
+
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar" style="border-bottom:1px solid #ccc">
+            <div class="navbar-brand">
+                {% comment %} <img src="{% static 'app/logo/formula.svg' %}" alt=""> {% endcomment %}
+                <a href="{% url 'home' %}" class="navbar-item has-text-dark"><strong>KnowledgeForm</strong></a>
+            </div>
+
+            <div class="navbar-menu">
+                <div class="navbar-end">
+
+                    {% if request.user.is_authenticated %}
+                        <label href="" class="navbar-item has-text-info">Bienvenue({{user.username}})</label>
+                        <a href="{% url 'acceuil' %}" class="navbar-item"><p class="button acceuil" style="margin-left: -15px;" onClick="myFunction()" id="item-btn"><i class="fa-solid fa-house"></i>Acceuil</p></a>                       
+                        {% if  request.user.userprofile.is_expert == True %}
+                        <a href="{% url 'problem' %}" class="navbar-item"><p class="button" style="margin-left: -15px;"><i class="fa-solid fa-diagram-project"></i>Formalisation Connaissances Tacites</p></a>
+                        <a href="{% url 'visualisation_domaine' %}" class="navbar-item"><p class="button" style="margin-left: -15px;"><i class="fa-regular fa-eye"></i>Visualisation</p></a>
+                        {% else %}
+                        <a href="{% url 'models' %}" class="navbar-item"><p class="button" style="margin-left: -15px;"><i class="fa-solid fa-tablets"></i>Modèles</p></a>
+                        <a href="{% url 'formalisation' %}" class="navbar-item"><p class="button" style="margin-left: -15px;"><i class="fa-solid fa-diagram-project"></i>Formalisation Connaissances Explicites</p></a>
+                        <a href="{% url 'visualisation' %}" class="navbar-item"><p class="button" style="margin-left: -15px;"><i class="fa-regular fa-eye"></i>Visualisation</p></a>
+                       
+                        {% endif %}
+                        <a href="{% url 'notifications' %}" class="navbar-item"><span class="button" style="margin-left: -15px;"><i class="fa-solid fa-bell"></i>Notifications(<p class='has-text-dark'>{{connaissanceNotification}}</p>) </span> </a>
+                    {% endif %}
+
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            {% if request.user.is_authenticated %}
+                                <a href="{% url 'logout' %}" class="button is-danger" style="margin-left: -10px;"><i class="fa-solid fa-arrow-right-from-bracket"></i>Sortie</a>
+                            {% else %}
+                                <a href="{% url 'home' %}" class="button"><i class="fa-solid fa-house"></i>Acceuil</a>
+                                {% comment %} <a href="{% url 'services' %}" class="button"><i class="fa-brands fa-servicestack"></i>Services</a> {% endcomment %}
+                                <a href="{% url 'login' %}" class="button is-size-6 is-info is-outlined"><i class="fa-solid fa-right-to-bracket"></i>S'identifier</a>
+                                <a href="{% url 'signup' %}" class="button"><i class="fa-solid fa-user-plus"></i>S'inscrire</a> 
+                                <a href="{% url 'signup' %}" class="button"><i class="fa-solid fa-briefcase-medical"></i>Aide</a> 
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            {% block content %}
+
+            {% endblock %}
+        </main>
+
+        <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
+            {% block scripts %}
+            
+
+
+            {% endblock scripts %}
+
+
+        
+        
+        
+    </body>
+</html>

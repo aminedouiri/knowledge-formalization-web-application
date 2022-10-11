@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}
+Models | KnowledgeForm
+{% endblock title %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/models.css' %}">{% endblock  %}
+
+{% block content%}
+{% if request.user.userprofile.is_expert == False %}
+    <div class='main-models'>
+ 
+         <p class="has-text-centered models-title" style="font-size:27px; margin-top:-50px;">
+            Description des modèles de connaissances</p>
+
+            <div class="columns" style="margin-top:50px;">
+                
+                {% for m in model %}
+
+                    <div class="column is-2">
+                        <div class="card card-element">
+                            <div class="card-content">
+
+                                <div class="media">
+                                    <div class="media-content">
+                                        <p class="title is-5">{{m}}</p>
+                                        <p class="subtitle is-6">Modèle de {{m}}</p>
+                                    </div>
+                                </div>
+                                <div class="card-image">
+                                    <figure class="image is-2by1">
+                                    <img src="{% static 'app/img/' %}{{m}}.png" alt="{{m}}" class="image-card" style="">
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                    <a href="{% url 'model' m %}" class="button is-small is-link">Voir</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div> 
+
+    </div>
+    
+    
+    {% endif %}
+{% endblock content %}

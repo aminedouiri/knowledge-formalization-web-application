@@ -1,0 +1,169 @@
+{% extends 'core/base.html' %}
+{% block title %}
+{% if request.user.userprofile.is_expert %} 
+Expert | KnowledgeForm
+{% else %}
+Igenieur | KnowledgeForm
+{% endif %}
+{% endblock title %}
+{% block content %}
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/connaissances.css' %}">{% endblock css %}
+
+{% if user.is_authenticated %}
+
+    {% if request.user.userprofile.is_expert %}
+
+        <div class="div-connaissances">
+
+            <div class="card card-content" id="div-connaissance" style="">
+                <h2 style="align-self:flex-start;margin-left:3px;"><strong>Connaissances:</strong></h2>
+                <table class="table is-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom
+                            </th>
+                            <th scope="col">Commente
+                            </th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for con in connaissance_list %}
+                        <tr>
+                            
+                            <td><div style="display:flex;flex-direction:column;">
+                                <div >
+                                {% if con.forme_connaissance == 'tableau' %}
+                                <img src="{% static 'app/icons/table-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                {% elif con.forme_connaissance == 'document'%}
+                                <img src="{% static 'app/icons/file-pdf-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                {% elif con.forme_connaissance == 'image' %}
+                                <img src="{% static 'app/icons/image-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                {% endif %}
+                                {{ con.nom_connaissance }}
+                                </div>
+                                <div class="button is-small is-link is-outlined" style="width:max-content;height:30px;display:flex;
+                                    align-self:flex-end;margin-top:-26px;margin-left:17vw;"><a href="{% url 'view' con.id %}"><img src="{% static 'app/icons/arrow-right-solid.svg' %}" alt="vide" class="icon-visualisation"></a></div>
+                        </div></td>
+                            <td>
+                                <a href="{% url 'commente' con.id %}" class="button is-small is-link is-outlined" style="margin-left:2px;">Commente<img src="{% static 'app/icons/comment-regular.svg' %}" alt="vide" class="icon-visualisation" style="width:20px;height:20px;"> </a></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="card card-content" id="div-affichage">
+                <h1 class="is-size-6 has-text-centered"><strong>Visualisation:</strong></h1>
+                    
+                    {% if connaissance_item.forme_connaissance == 'document' %}
+                    <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+                    
+                    {% elif connaissance_item.forme_connaissance == 'tableau' %}
+                    <div class="affichage-csv" class="affichage-tableau">{{tableau | safe}}</div> 
+                    
+                    {% elif connaissance_item.forme_connaissance == 'image' %}
+                    <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" clas="affichage-image">
+                    {% endif %}
+                
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <div class="main-connaissances">
+
+            <div class="card card-content" id="connaissance" style="display:flex;">
+                <h1 class="is-size-6 has-text-centered" style="align-self:flex-start;"><strong>Connaissances:</strong></h1>
+                
+                <table class="table is-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nom
+                            </th>
+                        </tr>
+                    </thead>
+                
+                    <tbody>
+                        {% for con in connaissance_list %}
+
+                        <tr>
+                            <td><div style="display:flex;flex-direction:column;">
+                                    <div >
+                                    {% if con.forme_connaissance == 'tableau' %}
+                                    <img src="{% static 'app/icons/table-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                    {% elif con.forme_connaissance == 'document'%}
+                                    <img src="{% static 'app/icons/file-pdf-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                    {% elif con.forme_connaissance == 'image' %}
+                                    <img src="{% static 'app/icons/image-solid.svg' %}" alt="vide" class="icon-visualisation"> 
+                                    {% endif %}
+                                    {{ con.nom_connaissance }}
+                                    </div>
+                                    <div class="button is-small is-link is-outlined" style="width:max-content;height:30px;display:flex;
+                                        align-self:flex-end;margin-top:-30px;"><a href="{% url 'view' con.id %}"><img src="{% static 'app/icons/arrow-right-solid.svg' %}" alt="vide" class="icon-visualisation"></a></div>
+                            </div></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="card card-content" id="affichage">
+                
+                <h1 class="is-size-6 has-text-centered"><strong>Visualisation:</strong></h1>
+                {% if connaissance_item.forme_connaissance == 'document' %}
+                <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+                
+                {% elif connaissance_item.forme_connaissance == 'tableau' %}
+                <div style="width:100%;height:auto;">{{tableau | safe}}</div>  
+                
+                {% elif connaissance_item.forme_connaissance == 'image' %}
+
+                <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
+                {% endif %}
+                
+                
+            </div>
+
+            <div class="card card-content" id="commentaire">
+
+                <h1 class="is-size-6 has-text-centered"><strong>Commentaires:</strong></h1>
+                <div>
+                    {% if commentaires %}
+                        {% for com in commentaires %}
+                            <div class="notification is-warning">
+                                <button class="delete"></button>
+                                <p class="notification-text"> Commentaire ajouter par <strong> {{com.created_by}} </strong> pour connaissance  <strong>{{com.created_for}}</strong> est cree a <strong>{{com.created_at}}</strong>
+                                contenu <strong>{{com.contenu}}</strong>
+                                </p>
+                            </div>
+                        {% endfor %}
+                    {% elif commentaires %}
+                    <div class="commentaire-vide">
+                        <p>
+                        Connaissance n'est pas encore commente
+                        <p>
+                        <div>
+                    {% endif %}
+                <div>
+            </div>
+
+        </div>
+
+    {% endif %}
+
+{% endif %}
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+
+
+{% endblock scripts %}

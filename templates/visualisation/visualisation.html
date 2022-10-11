@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+
+{% block title %}
+Visualisation | KnowledgeForm
+{% endblock title %}
+
+{% load static %}
+{% block css %}<link rel="stylesheet" href="{% static 'app/css/visualisation.css' %}">{% endblock css %}
+
+{% block content %}
+
+<div class="main-visualisation">
+
+    <div class="button-modele">
+        
+        <div class="button-element" id="tache-click">Taches</div>
+        <div class="button-element" id="phenomene-click">Phenomenes</div>
+        <div class="button-element" id="activite-click">Activites</div>
+        <div class="button-element" id="historique-click">Historiques</div>
+        <div class="button-element" id="strategique-click">Strategiques</div>
+        <div class="button-element" id="domaine-click">Domaines</div>
+        </hr>
+
+    </div>
+    <div class="content-modele">
+
+
+        <div id="default">
+            Choisi le modele pour la visualisation...
+        </div>
+        
+        <div id="tache">
+
+            {% for tache in taches %}
+                <div class="card card-content content-element box">
+                    {{tache}}
+                    <img src="{% static 'formalismes/tache/' %}{{tache}}.png" alt="{{tache}}" class="graphe">
+                </div>
+
+            {% endfor %} 
+
+        </div>
+    
+        <div id="activite">
+
+            {% for activite in activites %} 
+                <div class="card card-content content-element">
+                    {{activite}}
+                    <img src="{% static 'formalismes/activite/' %}{{activite}}.png" alt="{{activite}}" class="graphe">
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div id="historique">
+            {% for generation in generations %} 
+                <div class="card card-content content-element">
+                    {{generation}}
+                    <img src="{% static 'formalismes/historique/' %}{{generation}}.png" alt="{{generation}}" class="graphe">
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div id="phenomene">
+            {% for phenomene in phenomenes_metier %} 
+                <div class="card card-content content-element">
+                    {{phenomene}}
+                    <img src="{% static 'formalismes/phenomene/' %}{{phenomene}}.png" alt="{{phenomene}}" class="graphe">
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div id="strategique">
+            {% for strategie in strategies %} 
+                <div class="card card-content content-element">
+                    {{strategie}}
+                    <img src="{% static 'formalismes/strategique/' %}{{strategie}}.png" alt="{{strategie}}" class="graphe">
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div id="domaine">
+            {% for domaine in domaines %} 
+                <div class="card card-content content-element image">
+                    {{domaine}}
+                    <img src="{% static 'formalismes/domaine/' %}{{domaine}}.png" alt="{{domaine}}" class="graphe">
+                </div>
+
+            {% endfor %}
+        </div>
+
+            
+    </div>
+
+</div>
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'app/js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'app/js/visualisation.js' %}"></script>
+{% endblock scripts %}

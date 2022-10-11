@@ -1,0 +1,216 @@
+{% extends 'core/base.html' %} 
+{% block title %}Formalisation | KnowledgeForm{% endblock title %} 
+{% load static %} 
+{% block css %}
+
+<link rel="stylesheet" href="{% static 'app/css/problem.css' %}" />
+{% endblock css %} 
+{% block content %}
+
+
+
+<div class="main-domaine">
+  <div class="modele-domaine box card">
+    <h1 class="is-size-4 card-header-title is-centered">Model de Domaine</h1>
+    <form class="form-problem card-content" action="." method="post">
+      
+      {% csrf_token %}
+
+      <div class="field">
+        <label class="label">Nom de Domaine</label>
+        <div class="control">
+          <input class="input" type="text" name="domaine_name" />
+        </div>
+      </div>
+
+      {% comment %} ---------------------Attribute------------------------ {% endcomment %}
+      <div class="objects field card card-content">
+
+        <div class="field">
+          <label class="label">Nom de l object</label>
+          <div class="control">
+            <input class="input" type="text" name="object_name" />
+          </div>
+        </div>
+
+        <div class="attributes filed">
+
+          <div class="field">
+            <label class="label">Nom de l attribute de l object</label>
+            <div class="control">
+              <input class="input" type="text" name="attribute_name1"/>
+            </div>
+          </div>
+          
+          <div class="field">
+            <label class="label">Type de l attribute de l object</label>
+            <div class="control">
+              <input class="input" type="text" name="attribute_type1" />
+            </div>
+          </div>
+
+        </div>
+
+        {% comment %} <div class="field">
+          <button type="button" class="ajouter_attribute button is-link is-outlined">Ajouter Attribute</button>
+          <input type="number" id="label" value="1" class="label_attribute" style="display:none;"></input>
+        </div> {% endcomment %}
+
+      </div>
+
+      {% comment %} <div class="field">
+        <button type="button" class="ajouter_object button is-link is-outlined">Ajouter Object</button>
+        <input type="number" id="label" value="1" class="label_object" style="display:none;"></input>
+      </div> {% endcomment %}
+
+    
+
+    {% comment %} -----------------------Attribute---------------------- {% endcomment %}
+
+
+
+{% comment %} -----------------------Probleme---------------------- {% endcomment %}
+
+  <div class="field card card-content">
+
+      <div class="field">
+        <label class="label">Nom de problem</label>
+        <div class="control">
+          <input class="input" type="text" name="probleme_name" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Status de problem</label>
+        <div class="control">
+          <input class="input" type="text" name="probleme_status" />
+        </div>
+      </div>
+      <div class="field problems">
+      <div class="field">
+        <label class="label">Nom d'attribute de probleme </label>
+        <div class="control">
+          <input class="input" type="text" name="probleme_attribute_name1" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Value d'attribute de probleme</label>
+        <div class="control">
+          <input class="input" type="text" name="probleme_attribute_value1" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Nom de role d'attribute de probleme</label>
+        <div class="control">
+          <input class="input" type="text" name="attribute_role_name1" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Permission de role d'attribute de probleme</label>
+        <div class="control">
+          <input class="input" type="text" name="permises_description1" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Conclusion de role d'attribute de probleme</label>
+        <div class="control">
+          <input class="input" type="text" name="conclusion_name1" />
+        </div>
+      </div>
+
+    </div>
+
+    {% comment %} <div class="field">
+      <button type="button" class="ajouter_attribute button is-link is-outlined">Ajouter Attribute Probleme</button>
+      <input type="number" id="label" value="1" class="label_probeme" style="display:none;"></input>
+    </div> {% endcomment %}
+
+
+  </div>
+
+
+
+{% comment %} -----------------------Probleme---------------------- {% endcomment %}
+
+
+
+
+
+{% comment %} ----------------------Step----------------------- {% endcomment %}
+      <div class="field card card-content">
+        <div class="field">
+          <label class="label">Nom de resolution</label>
+          <div class="control">
+            <input class="input" type="text" name="resolution_name" />
+          </div>
+        </div>
+        <div class="steps-model field">
+          <div class="field">
+            <label class="label">Nom de Step</label>
+            <div class="control">
+              <input class="input" type="text" name="step_name1" />
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Description de Step</label>
+            <div class="control">
+              <input class="input" type="text" name="step_description1" />
+            </div>
+          </div>
+
+        </div>
+
+        {% comment %} <div class="field">
+          <button type="button" class="ajouter_step button is-link is-outlined">Ajouter Step</button>
+          <input type="number" id="label" value="1" class="label_step" style="display:none;"></input>
+        </div> {% endcomment %}
+      </div>
+      
+
+      {% comment %} --------------------Step-------------------------- {% endcomment %}
+
+
+      <div class="field">
+        <label class="label">Nom de Calculation fonction</label>
+        <div class="control">
+          <input class="input" type="text" name="calculation_fonction_name" />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description de Calculation fonction</label>
+        <div class="control">
+          <input class="input" type="text" name="calculation_fonction_description"/>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Nombre de Parametres de Calculcation fonction</label>
+        <div class="control">
+          <input class="input" type="number" name="nombre_parametre_calculation_fonction"/>
+        </div>
+      </div>
+
+      <div class="field select">  
+        <select name="type_partage_domaine" class="input">
+            <option value="" selected>Type de partage</option>
+            <option value="prive">Prive</option>
+            <option value="public">Public</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <input type="submit" class="button is-info input" value="Formaliser" name="domaine"/>
+      </div>
+    </form>
+
+    <div class="modele-vide1"></div>
+    <div class="modele-vide2"></div>
+  </div>
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'app/js/jquery-3.6.0.min.js' %}"></script>
+{% comment %} <script src="{% static 'app/js/ajouter_step.js' %}"></script> {% endcomment %}
+<script src="{% static 'app/js/ajouter_attribute.js' %}"></script>
+{% endblock scripts %}

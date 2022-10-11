@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% block title %}S'iscrire | KnowledgeForm{% endblock title %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'app/css/login.css' %}">
+{% endblock css %}
+{% block content %}
+
+<div class="form-main">
+    <div class="form signup box">
+        <div class="form-content">
+            <header class="form-title" style="font-size:25px;">KnowledgeForm</header>
+            <form action="." method="post">
+                {% csrf_token %}
+                <div class="field input-field">
+                    <input type="text" name="username"  placeholder="Username" maxlength="150" autofocus="oui" required="" id="id_username" class="input">
+                </div>
+                <div class="field input-field">
+                    <input type="email" name="email"  placeholder="Email" maxlength="254" id="id_email" class="input">
+                </div>
+                <div>
+                    <select name="account_type" class="input">
+                        <option value="ingenieur" selected>Type d'utilisateur</option>
+                        <option value="ingenieur">Ingenieur</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                <div class="field input-field">
+                    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1" placeholder="Mot de passe"
+                    class="password input">
+                    {% comment %} <i class='bx-show eye-icon' style="display:none;">masquer</i> {% endcomment %}
+                </div>
+
+                <div class="field input-field">
+                    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2"  placeholder="Confirmer mot de passe"
+                    class="input password">
+                    <i class="fa-solid fa-eye-slash eye-icon"></i>
+                    {% comment %} <i class='eye-icon uil-eye-slash' style="display:none;">masquer</i> {% endcomment %}
+                </div>
+
+
+                {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %} 
+                            <div class="has-text-danger">
+                                <strong class="has-text-danger">{{ error|escape }}</strong>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
+
+
+                <div class="field button-field">
+                    <button>S'inscrire</button>
+                </div>
+            </form>
+
+            <div class="form-link">
+                <span>Vous avez déjà un compte? <a href="{% url 'login' %}" class="link login-link">Se connceter</a></span>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}<script src="{% static 'app/js/login.js' %}"></script>{% endblock scripts %}
