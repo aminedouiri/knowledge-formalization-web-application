@@ -365,33 +365,6 @@ Formalisation | KnowledgeForm
                     </div>
                 </div>
 
-                {% comment %} <div class="field">
-                    <label class="label">Nom de Sous Competence</label>
-                    <div class="control">
-                        <input class="input" type="text" name="nom_sous_competence">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Axe de Competence</label>
-                    <div class="control">
-                        <input class="input" type="text" name="nom_axe_competence">
-                    </div>
-                </div> {% endcomment %}
-
-                {% comment %} <div class="field">
-                    <label class="label">Nom de Processus</label>
-                    <div class="control">
-                        <input class="input" type="text" name="nom_processus">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Ceour Metier</label>
-                    <div class="control">
-                        <input class="input" type="text" name="ceour_metier">
-                    </div>
-                </div> {% endcomment %}
 
                 <div class="field">
                     <label class="label">Axe de Strategie</label>
@@ -400,21 +373,6 @@ Formalisation | KnowledgeForm
                     </div>
                 </div>
 
-                {% comment %} <div class="field">
-                    <label class="label">Orientation Strategique</label>
-                    <div class="control">
-                        <input class="input" type="text" name="orientation_strategique">
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label class="label">Theme Strategie</label>
-                    <div class="control">
-                        <input class="input" type="text" name="theme_strategie">
-                    </div>
-                </div> {% endcomment %}
-
-            
                 <div class="field select">  
                     <select name="type_partage_strategique" class="input">
                         <option value="" selected>Type de partage</option>
@@ -494,7 +452,7 @@ Formalisation | KnowledgeForm
 {% endblock content %}
 
 {% block scripts %}
-    <script src="{% static 'app/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{% static 'app/js/formalisation.js' %}"></script>
     <script src="{% static 'app/js/show_hide_list.js' %}"></script>
     <script src="{% static 'app/js/ajouter_step.js' %}"></script>

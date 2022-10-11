@@ -51,21 +51,6 @@
 
         </div>
 
-        {% comment %} <div class="field">
-          <button type="button" class="ajouter_attribute button is-link is-outlined">Ajouter Attribute</button>
-          <input type="number" id="label" value="1" class="label_attribute" style="display:none;"></input>
-        </div> {% endcomment %}
-
-      </div>
-
-      {% comment %} <div class="field">
-        <button type="button" class="ajouter_object button is-link is-outlined">Ajouter Object</button>
-        <input type="number" id="label" value="1" class="label_object" style="display:none;"></input>
-      </div> {% endcomment %}
-
-    
-
-    {% comment %} -----------------------Attribute---------------------- {% endcomment %}
 
 
 
@@ -120,17 +105,11 @@
 
     </div>
 
-    {% comment %} <div class="field">
-      <button type="button" class="ajouter_attribute button is-link is-outlined">Ajouter Attribute Probleme</button>
-      <input type="number" id="label" value="1" class="label_probeme" style="display:none;"></input>
-    </div> {% endcomment %}
 
 
   </div>
 
 
-
-{% comment %} -----------------------Probleme---------------------- {% endcomment %}
 
 
 
@@ -210,7 +189,6 @@
 {% endblock content %}
 
 {% block scripts %}
-<script src="{% static 'app/js/jquery-3.6.0.min.js' %}"></script>
-{% comment %} <script src="{% static 'app/js/ajouter_step.js' %}"></script> {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{% static 'app/js/ajouter_attribute.js' %}"></script>
 {% endblock scripts %}
