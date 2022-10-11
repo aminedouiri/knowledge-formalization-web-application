@@ -1,0 +1,17 @@
+@prefix : <http://dig.isi.edu/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:Generation a owl:Class .
+:Argumentation a owl:Class .
+:Element a owl:Class .
+:Classe a owl:Class .
+:Moteur_evolution a owl:Class .
+:possede a owl:ObjectProperty .
+:appartient a owl:ObjectProperty .
+:nom a owl:DatatypeProperty .
+:debut_periode a owl:DatatypeProperty .
+:fin_periode a owl:DatatypeProperty .
+:objectif a owl:DatatypeProperty .
+:type_de_partage a owl:DatatypeProperty .
