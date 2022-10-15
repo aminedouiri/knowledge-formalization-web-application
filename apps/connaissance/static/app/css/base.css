@@ -20,6 +20,3 @@ main {
     grid-area: main-body;
     background-color: #eee;
 }
-.navbar-item:active{
-    background-color: aqua;
-}

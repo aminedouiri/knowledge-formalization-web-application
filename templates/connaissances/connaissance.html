@@ -60,13 +60,13 @@ Igenieur | KnowledgeForm
                 <h1 class="is-size-6 has-text-centered"><strong>Visualisation:</strong></h1>
                     
                     {% if connaissance_item.forme_connaissance == 'document' %}
-                    <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+                    <iframe src="../../apps/connaissance/static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
                     
                     {% elif connaissance_item.forme_connaissance == 'tableau' %}
                     <div class="affichage-csv" class="affichage-tableau">{{tableau | safe}}</div> 
                     
                     {% elif connaissance_item.forme_connaissance == 'image' %}
-                    <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" clas="affichage-image">
+                    <img src="../../apps/connaissance/static/connaissances/" alt="aaaa" clas="affichage-image">
                     {% endif %}
                 
             </div>
@@ -117,14 +117,14 @@ Igenieur | KnowledgeForm
                 
                 <h1 class="is-size-6 has-text-centered"><strong>Visualisation:</strong></h1>
                 {% if connaissance_item.forme_connaissance == 'document' %}
-                <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+                <iframe src="../../apps/connaissance/static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
                 
                 {% elif connaissance_item.forme_connaissance == 'tableau' %}
                 <div style="width:100%;height:auto;">{{tableau | safe}}</div>  
                 
                 {% elif connaissance_item.forme_connaissance == 'image' %}
 
-                <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
+                <img src="../../apps/connaissance/static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
                 {% endif %}
                 
                 

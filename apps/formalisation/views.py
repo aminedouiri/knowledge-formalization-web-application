@@ -3,7 +3,7 @@ from apps.connaissance.models import Connaissance
 from apps.commentaire.models import Commentaire
 from owlready2 import *   
 import rdflib, os
-from apps.visualisation.views import visualisation_tache, visualisation_phenomene, visualisation_activite, visualisation_historique
+#from apps.visualisation.views import visualisation_tache, visualisation_phenomene, visualisation_activite, visualisation_historique
 
 # Create your views here.
 

@@ -436,12 +436,12 @@ Formalisation | KnowledgeForm
         
             
             {% if connaissance_item.forme_connaissance == 'document' %}
-                <iframe src="../../static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
+                <iframe src="../../apps/connaissance/static/connaissances/{{connaissance_item.url_connaissance}}" height="100%" width="100%"></iframe>
             {% elif connaissance_item.forme_connaissance == 'tableau' %}
             <div style="width:100%;height:auto;"> {{tableau | safe }}</div>
             {% elif connaissance_item.forme_connaissance == 'image' %}
         
-                <img src="../../static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
+                <img src="../../apps/connaissance/static/connaissances/{{connaissance_item.url_connaissance}}" alt="aaaa" style="width:max-content;height:auto;">
             {% endif %}
         
     </div>

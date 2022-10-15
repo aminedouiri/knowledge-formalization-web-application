@@ -12,7 +12,7 @@ def acceuil(request):
 
     if User.is_authenticated:
 
-        path_folder = 'static/connaissances'
+        path_folder = 'apps/connaissance/static/connaissances'
         for x in os.listdir(path_folder):
             if x.endswith('.png'):
                 y = x.replace('.png','')
