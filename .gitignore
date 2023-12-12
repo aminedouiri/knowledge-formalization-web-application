@@ -1,0 +1,21 @@
+# .gitignore
+
+# Ignore Python compiled files
+*.pyc
+__pycache__/
+
+# Ignore the virtual environment directory
+venv/
+
+# Ignore the database file
+db.sqlite3
+
+# Ignore local settings
+*.env
+
+# Ignore IDE or editor-specific files
+.vscode/
+.idea/
+
+# Ignore environment-specific settings
+.env
